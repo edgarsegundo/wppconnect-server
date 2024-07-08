@@ -88,18 +88,20 @@ npm run dev
 
 ssh edgar@localhost
 
-
-curl -X POST --location "http://localhost:21465/api/mySession/def35ab5-4b2d-4492-ae8a-2a28cfae9996/generate-token"
+  
+curl -X POST --location "http://localhost:21465/api/mySession/f2f054f7-19e1-4205-814f-c6c4300d90d1/generate-token"
 
 SECRET_KEY: def35ab5-4b2d-4492-ae8a-2a28cfae9996
+SECRET_KEY: f2f054f7-19e1-4205-814f-c6c4300d90d1
 
 
 {
-  "status":"success",
-  "session":"mySession",
-  "token":"$2b$10$JbJL_Vbfqx3tuCoqHZuoZeAQanEzj_3l1M4oNnCd16zv4R2Muib_a",
-  "full":"mySession:$2b$10$JbJL_Vbfqx3tuCoqHZuoZeAQanEzj_3l1M4oNnCd16zv4R2Muib_a"
+    "status":"success",
+    "session":"mySession",
+    "token":"$2b$10$cAwQ2RIpRU6fGakUBJXIhOy4Nb5hcFPOrLtNSeAJPdYziMwLw4ZLa",
+    "full":"mySession:$2b$10$cAwQ2RIpRU6fGakUBJXIhOy4Nb5hcFPOrLtNSeAJPdYziMwLw4ZLa"
 }
+
 
 #Starting Session
 # /api/:session/start-session
@@ -107,7 +109,7 @@ SECRET_KEY: def35ab5-4b2d-4492-ae8a-2a28cfae9996
 curl -X POST --location "http://localhost:21465/api/mySession/start-session" \
     -H "Accept: application/json" \
     -H "Content-Type: application/json" \
-    -H "Authorization: Bearer \$2b\$10\$JbJL_Vbfqx3tuCoqHZuoZeAQanEzj_3l1M4oNnCd16zv4R2Muib_a"
+    -H "Authorization: Bearer \$2b\$10\$cAwQ2RIpRU6fGakUBJXIhOy4Nb5hcFPOrLtNSeAJPdYziMwLw4ZLa"
     
   
 #Get QrCode
@@ -125,11 +127,28 @@ curl -X POST --location "http://localhost:21465/api/mySession/start-session" \
 curl -X POST --location "http://localhost:21465/api/mySession/send-message" \
     -H "Content-Type: application/json; charset=utf-8" \
     -H "Accept: application/json" \
-    -H "Authorization: Bearer \$2b\$10\$JbJL_Vbfqx3tuCoqHZuoZeAQanEzj_3l1M4oNnCd16zv4R2Muib_a" \
+    -H "Authorization: Bearer \$2b\$10\$cAwQ2RIpRU6fGakUBJXIhOy4Nb5hcFPOrLtNSeAJPdYziMwLw4ZLa" \
     -d "{
           \"phone\": \"5519991113176\",
-          \"message\": \"*Viaje* Trâmite\"
+          \"message\": \"*Viaje 5* Trâmite\"
         }"
+
+## Setting wppconnect-server on supervisor
+
+/etc/supervisor/conf.d/wppconnect.conf
+
+```bash
+[program:wppconnect]
+command=/bin/bash -c 'source /home/edgar/.nvm/nvm.sh && npm start'
+environment=HOME="/home/edgar",USER="edgar",PATH="/home/edgar/.nvm/versions/node/v18.17.0/bin:/usr/local/sbin:/usr/local/bi
+n:/usr/sbin:/usr/bin:/sbin:/bin"
+directory=/home/edgar/Repos/wppconnect-server
+user=edgar
+autostart=true
+autorestart=true
+stderr_logfile=/var/log/wppconnect.err.log
+stdout_logfile=/var/log/wppconnect.out.log
+```
 
 ## Instructions
 
@@ -232,3 +251,9 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with WPPConnect. If not, see <https://www.gnu.org/licenses/>.
+
+
+## Memory issue
+
+ps aux | grep wppconnect-server
+free -h
