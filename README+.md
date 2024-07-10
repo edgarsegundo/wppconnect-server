@@ -130,8 +130,337 @@ curl -X POST --location "http://localhost:21465/api/mySession/send-message" \
     -H "Authorization: Bearer \$2b\$10\$cAwQ2RIpRU6fGakUBJXIhOy4Nb5hcFPOrLtNSeAJPdYziMwLw4ZLa" \
     -d "{
           \"phone\": \"5519991113176\",
-          \"message\": \"*Viaje 5* Trâmite\"
+          \"message\": \"*Viaje 7* Trâmite\"
         }"
+
+
+curl -X POST --location "http://localhost:21465/api/mySession/send-message" \
+    -H "Content-Type: application/json; charset=utf-8" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer \$2b\$10\$cAwQ2RIpRU6fGakUBJXIhOy4Nb5hcFPOrLtNSeAJPdYziMwLw4ZLa" \
+    -d "{
+          \"phone\": \"5541988619399\",
+          \"message\": \"*Seu Sogro* da API\"
+        }"
+
+
+curl -X POST --location "http://localhost:21465/api/mySession/send-message" \
+    -H "Content-Type: application/json; charset=utf-8" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer ???" \
+    -d "{
+          \"phone\": \"5519991113176\",
+          \"message\": \"*Viaje 7* Trâmite\"
+        }"
+
+
+# https://raw.githubusercontent.com/api/{session}/all-new-messages
+
+curl -X GET --location "http://localhost:21465/api/mySession/all-new-messages" \
+    -H "Content-Type: application/json; charset=utf-8" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer \$2b\$10\$cAwQ2RIpRU6fGakUBJXIhOy4Nb5hcFPOrLtNSeAJPdYziMwLw4ZLa"
+
+
+
+curl -X GET --location "http://localhost:21465/api/mySession/all-contacts" \
+    -H "Content-Type: application/json; charset=utf-8" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer \$2b\$10\$cAwQ2RIpRU6fGakUBJXIhOy4Nb5hcFPOrLtNSeAJPdYziMwLw4ZLa"
+
+
+
+
+curl -X POST --location "http://localhost:21465/api/mySession/list-chats" \
+    -H "Content-Type: application/json; charset=utf-8" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer \$2b\$10\$cAwQ2RIpRU6fGakUBJXIhOy4Nb5hcFPOrLtNSeAJPdYziMwLw4ZLa" \
+    -d "{
+          \"count\": 2,
+          \"direction\": \"after\"
+        }"
+
+
+
+
+
+{
+  "id": "<chatId>",
+  "count": 20,
+  "direction": "after"
+}
+
+curl -X POST --location "http://localhost:21465/api/mySession/list-chats" \
+    -H "Content-Type: application/json; charset=utf-8" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer \$2b\$10\$cAwQ2RIpRU6fGakUBJXIhOy4Nb5hcFPOrLtNSeAJPdYziMwLw4ZLa" \
+    -d "{
+          \"count\": 1,
+        }"
+
+
+```json
+[
+   {
+      "id":{
+         "server":"c.us",
+         "user":"5519997253772",
+         "_serialized":"5519997253772@c.us"
+      },
+      "labels":[
+         
+      ],
+      "lastReceivedKey":{
+         "fromMe":true,
+         "remote":{
+            "server":"c.us",
+            "user":"5519997253772",
+            "_serialized":"5519997253772@c.us"
+         },
+         "id":"3EB022D300885BCA3BF713",
+         "_serialized":"true_5519997253772@c.us_3EB022D300885BCA3BF713"
+      },
+      "t":1720546663,
+      "unreadCount":0,
+      "unreadDividerOffset":0,
+      "isReadOnly":false,
+      "muteExpiration":0,
+      "isAutoMuted":false,
+      "notSpam":true,
+      "unreadMentionsOfMe":[
+         
+      ],
+      "unreadMentionCount":0,
+      "hasUnreadMention":false,
+      "archiveAtMentionViewedInDrawer":false,
+      "hasChatBeenOpened":false,
+      "tcToken":{
+         
+      },
+      "tcTokenTimestamp":1720546445,
+      "pendingInitialLoading":false,
+      "celebrationAnimationLastPlayed":0,
+      "hasRequestedWelcomeMsg":false,
+      "msgs":"None",
+      "kind":"chat",
+      "isBroadcast":false,
+      "isGroup":false,
+      "isUser":true,
+      "contact":{
+         "id":{
+            "server":"c.us",
+            "user":"5519997253772",
+            "_serialized":"5519997253772@c.us"
+         },
+         "pushname":"Marcelo",
+         "type":"in",
+         "verifiedName":"Marcelo",
+         "isBusiness":true,
+         "isEnterprise":false,
+         "isSmb":true,
+         "verifiedLevel":0,
+         "privacyMode":"None",
+         "labels":[
+            
+         ],
+         "textStatusLastUpdateTime":-1,
+         "syncToAddressbook":false,
+         "formattedName":"+55 19 99725-3772",
+         "isMe":false,
+         "isMyContact":false,
+         "isPSA":false,
+         "isUser":true,
+         "isWAContact":true,
+         "profilePicThumbObj":{
+            "eurl":"https://pps.whatsapp.net/v/t61.24694-24/309838817_740442780911613_1132383287817995215_n.jpg?ccb=11-4&oh=01_Q5AaIBmE1BOf9mJAQHnR_BM2KCUcQnpzGMuFj3wOOKyEgfmo&oe=669A8399&_nc_sid=e6ed6c&_nc_cat=110",
+            "id":{
+               "server":"c.us",
+               "user":"5519997253772",
+               "_serialized":"5519997253772@c.us"
+            },
+            "img":"https://media-fml20-1.cdn.whatsapp.net/v/t61.24694-24/309838817_740442780911613_1132383287817995215_n.jpg?stp=dst-jpg_s96x96&ccb=11-4&oh=01_Q5AaIM1LOUlRhlij840boxd055dYb5GUEKALMq1FcplXRnCA&oe=669A8399&_nc_sid=e6ed6c&_nc_cat=110",
+            "imgFull":"https://media-fml20-1.cdn.whatsapp.net/v/t61.24694-24/309838817_740442780911613_1132383287817995215_n.jpg?ccb=11-4&oh=01_Q5AaIBmE1BOf9mJAQHnR_BM2KCUcQnpzGMuFj3wOOKyEgfmo&oe=669A8399&_nc_sid=e6ed6c&_nc_cat=110",
+            "tag":"1678826545"
+         },
+         "msgs":"None"
+      },
+      "groupMetadata":"None",
+      "presence":{
+         "id":{
+            "server":"c.us",
+            "user":"5519997253772",
+            "_serialized":"5519997253772@c.us"
+         },
+         "chatstates":[
+            
+         ]
+      }
+   }
+]
+```
+
+
+
+```json
+[
+   {
+      "id":{
+         "server":"c.us",
+         "user":"5519997253772",
+         "_serialized":"5519997253772@c.us"
+      },
+      "labels":[
+         
+      ],
+      "lastReceivedKey":{
+         "fromMe":true,
+         "remote":{
+            "server":"c.us",
+            "user":"5519997253772",
+            "_serialized":"5519997253772@c.us"
+         },
+         "id":"3EB022D300885BCA3BF713",
+         "_serialized":"true_5519997253772@c.us_3EB022D300885BCA3BF713"
+      },
+      "t":1720546663,
+      "unreadCount":0,
+      "unreadDividerOffset":0,
+      "isReadOnly":false,
+      "muteExpiration":0,
+      "isAutoMuted":false,
+      "notSpam":true,
+      "unreadMentionsOfMe":[
+         
+      ],
+      "unreadMentionCount":0,
+      "hasUnreadMention":false,
+      "archiveAtMentionViewedInDrawer":false,
+      "hasChatBeenOpened":false,
+      "tcToken":{
+         
+      },
+      "tcTokenTimestamp":1720546445,
+      "pendingInitialLoading":false,
+      "celebrationAnimationLastPlayed":0,
+      "hasRequestedWelcomeMsg":false,
+      "msgs":"None",
+      "kind":"chat",
+      "isBroadcast":false,
+      "isGroup":false,
+      "isUser":true,
+      "contact":{                                           *
+         "id":{
+            "server":"c.us",
+            "user":"5519997253772",                         
+            "_serialized":"5519997253772@c.us"              *
+         },
+         "pushname":"Marcelo",                              *
+         "type":"in",
+         "verifiedName":"Marcelo",                          *
+         "isBusiness":true,                                 *
+         "isEnterprise":false,
+         "isSmb":true,
+         "verifiedLevel":0,
+         "privacyMode":"None",
+         "labels":[
+            
+         ],
+         "textStatusLastUpdateTime":-1,
+         "syncToAddressbook":false,
+         "formattedName":"+55 19 99725-3772",
+         "isMe":false,
+         "isMyContact":false,
+         "isPSA":false,
+         "isUser":true,
+         "isWAContact":true,
+         "profilePicThumbObj":{
+            "eurl":"https://pps.whatsapp.net/v/t61.24694-24/309838817_740442780911613_1132383287817995215_n.jpg?ccb=11-4&oh=01_Q5AaIBmE1BOf9mJAQHnR_BM2KCUcQnpzGMuFj3wOOKyEgfmo&oe=669A8399&_nc_sid=e6ed6c&_nc_cat=110",
+            "id":{
+               "server":"c.us",
+               "user":"5519997253772",
+               "_serialized":"5519997253772@c.us"
+            },
+            "img":"https://media-fml20-1.cdn.whatsapp.net/v/t61.24694-24/309838817_740442780911613_1132383287817995215_n.jpg?stp=dst-jpg_s96x96&ccb=11-4&oh=01_Q5AaIM1LOUlRhlij840boxd055dYb5GUEKALMq1FcplXRnCA&oe=669A8399&_nc_sid=e6ed6c&_nc_cat=110",
+            "imgFull":"https://media-fml20-1.cdn.whatsapp.net/v/t61.24694-24/309838817_740442780911613_1132383287817995215_n.jpg?ccb=11-4&oh=01_Q5AaIBmE1BOf9mJAQHnR_BM2KCUcQnpzGMuFj3wOOKyEgfmo&oe=669A8399&_nc_sid=e6ed6c&_nc_cat=110",
+            "tag":"1678826545"
+         },
+         "msgs":"None"
+      },
+      "groupMetadata":"None",
+      "presence":{
+         "id":{
+            "server":"c.us",
+            "user":"5519997253772",
+            "_serialized":"5519997253772@c.us"
+         },
+         "chatstates":[
+            
+         ]
+      }
+   }
+]
+```
+
+
+
+# [BackgroundScheduler](https://chatgpt.com/c/c9a5a279-4d3f-4794-91ef-2869a137bdd5)
+
+```python
+from apscheduler.schedulers.background import BackgroundScheduler
+import requests
+import sqlite3
+
+def post_task():
+    response = requests.post('https://api.example.com/post-endpoint', data={'key': 'value'})
+    print(response.json())
+
+def get_task():
+    response = requests.get('https://api.example.com/get-endpoint')
+    data = response.json()
+    # Conectar a la base de datos y escribir los datos
+    conn = sqlite3.connect('example.db')
+    c = conn.cursor()
+    c.execute('INSERT INTO results (data) VALUES (?)', (data,))
+    conn.commit()
+    conn.close()
+
+scheduler = BackgroundScheduler()
+scheduler.add_job(post_task, 'interval', hours=1)  # Ejecutar cada hora
+scheduler.add_job(get_task, 'cron', day_of_week='mon-fri', hour=10)  # Ejecutar de lunes a viernes a las 10 AM
+scheduler.start()
+
+# Mantener el programa corriendo
+try:
+    while True:
+        time.sleep(2)
+except (KeyboardInterrupt, SystemExit):
+    scheduler.shutdown()
+```
+
+# I have this whatsapp api, help me infer what mean the param direction with value after:
+
+En el contexto de una API de WhatsApp para listar chats, el parámetro `direction` con el valor `after` generalmente se usa para paginar los resultados. Aquí te explico lo que podría significar:
+
+- **`id`**: Este es el identificador del chat a partir del cual se empezará la paginación.
+- **`count`**: La cantidad de chats que deseas obtener en la respuesta.
+- **`direction`**: Define la dirección de la paginación. El valor `after` indica que se deben obtener los chats que vienen después del chat identificado por el `id` proporcionado.
+
+Por lo tanto, cuando usas el valor `after` en el parámetro `direction`, estás solicitando los chats que vienen después del chat con el `id` especificado. Esto es útil para paginar a través de una larga lista de chats, permitiéndote obtener un subconjunto de chats en cada solicitud.
+
+Aquí tienes un ejemplo simplificado:
+
+```json
+{
+  "id": "12345",
+  "count": 20,
+  "direction": "after"
+}
+```
+
+En este caso, la solicitud intentará obtener 20 chats que vienen después del chat con el `id` "12345".
+
+Si tienes alguna otra duda o necesitas más detalles, no dudes en preguntar.
+
 
 ## Setting wppconnect-server on supervisor
 
