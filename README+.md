@@ -1,13 +1,13 @@
 # README+
 
 ## useful links
+
 https://wppconnect.io/swagger/wppconnect-server
 
 https://wppconnect.io/docs/projects/wppserver/installation
 https://github.com/edgarsegundo/wppconnect
 https://github.com/wppconnect-team/wppconnect?tab=readme-ov-file
 https://wppconnect.io/docs/projects/wppserver/installation
-
 
 ## how to install
 
@@ -28,25 +28,22 @@ https://chatgpt.com/share/aa253fb9-be76-4e9d-a130-b236a1beb4d1
 How to Run an Ubuntu Server VM with VirtualBox (and login via SSH)
 https://www.youtube.com/watch?v=wqm_DXh0PlQ
 
-
-
-
 (Error) gconf-service libasound2 libgconf-2-4 libappindicator1
 
-sudo apt-get install -y libxshmfence-dev  (OK)
+sudo apt-get install -y libxshmfence-dev (OK)
 sudo apt-get install -y libgbm-dev wget unzip fontconfig
-sudo apt-get install -y locales 
-sudo apt-get install -y  libatk1.0-0 libc6 
+sudo apt-get install -y locales
+sudo apt-get install -y libatk1.0-0 libc6
 sudo apt-get install -y libcairo2 libcups2 libdbus-1-3 libexpat1
-sudo apt-get install -y libfontconfig1 libgcc1 
-sudo apt-get install -y  libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 
-sudo apt-get install -y libpangocairo-1.0-0 
+sudo apt-get install -y libfontconfig1 libgcc1
+sudo apt-get install -y libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0
+sudo apt-get install -y libpangocairo-1.0-0
 sudo apt-get install -y libstdc++6 libx11-6 libx11-xcb1 libxcb1
 sudo apt-get install -y libxcomposite1 libxcursor1 libxdamage1 libxext6
-sudo apt-get install -y libxfixes3 libxi6 libxrandr2 
+sudo apt-get install -y libxfixes3 libxi6 libxrandr2
 sudo apt-get install -y libxrender1 libxss1 libxtst6
-sudo apt-get install -y ca-certificates 
-sudo apt-get install -y fonts-liberation 
+sudo apt-get install -y ca-certificates
+sudo apt-get install -y fonts-liberation
 sudo apt-get install -y libnss3 lsb-release xdg-utils
 
 sudo apt-get install -y libxshmfence-dev libgbm-dev wget unzip fontconfig locales libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgcc-s1 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libx
@@ -57,22 +54,26 @@ wget -c https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.de
 
 sudo apt-get update
 
-sudo apt-get install libappindicator3-1    old = sudo apt-get install libappindicator1
+sudo apt-get install libappindicator3-1 old = sudo apt-get install libappindicator1
 
 Talvez precisa rodar isso antes de rodar a proxima linha : sudo apt-get install -f
 
 sudo dpkg -i google-chrome-stable_current_amd64.deb
 
 ## Instalar las dependencias
+
 npm install
 
 ## Compilar el proyecto
+
 npm run build
 
 ## Ejecutar en modo desarrollo (con hot-reload)
+
 npm run dev
 
 ## Ejecutar en modo producción
+
 npm start
 
 nvm install 18.17.0
@@ -86,7 +87,6 @@ npm run dev
 
 ssh edgar@localhost
 
-
 SECRET_KEY: def35ab5-4b2d-4492-ae8a-2a28cfae9996
 
 curl -X POST --location "http://localhost:21465/api/session-vt-brasil/f2f054f7-19e1-4205-814f-c6c4300d90d1/generate-token"
@@ -94,20 +94,14 @@ curl -X POST --location "http://localhost:21465/api/session-vt-brasil/f2f054f7-1
 results:
 
 {
-   "status":"success",
-   "session":"session-vt-brasil",
-   "token":"$2b$10$dPxqpPFqGYbS57MoVnhn2OrlUnKsJxnZrg5PQw7KuH02nmAs2G3CG",
-   "full":"session-vt-brasil:$2b$10$dPxqpPFqGYbS57MoVnhn2OrlUnKsJxnZrg5PQw7KuH02nmAs2G3CG"
+"status":"success",
+"session":"session-vt-brasil",
+"token":"$2b$10$dPxqpPFqGYbS57MoVnhn2OrlUnKsJxnZrg5PQw7KuH02nmAs2G3CG",
+"full":"session-vt-brasil:$2b$10$dPxqpPFqGYbS57MoVnhn2OrlUnKsJxnZrg5PQw7KuH02nmAs2G3CG"
 }
 
-
-[# showAllSessions](https://raw.githubusercontent.com/api/{secretkey}/show-all-sessions)
-```bash
-curl -X GET "http://localhost:21465/api/def35ab5-4b2d-4492-ae8a-2a28cfae9996/show-all-sessions"
-```
-
-
 [# getQrCode](https://raw.githubusercontent.com/api/{session}/qrcode-session)
+
 ```bash
 curl -X GET "http://localhost:21465/api/session-vt-brasil/qrcode-session" \
     -H "Content-Type: application/json; charset=utf-8" \
@@ -115,9 +109,46 @@ curl -X GET "http://localhost:21465/api/session-vt-brasil/qrcode-session" \
     -H "Authorization: Bearer \$2b\$10\$dPxqpPFqGYbS57MoVnhn2OrlUnKsJxnZrg5PQw7KuH02nmAs2G3CG"
 ```
 
+## browserArgs options arguments/args that are working on src/config.ts
 
+```json
+{
+   createOptions: {
+   browserArgs: [
+   '--disable-web-security',
+   '--no-sandbox',
+   //'--renderer-process-limit=1', // Limit to 4 renderer processes
+   //'--disable-setuid-sandbox',
+   '--disable-web-security',
+   '--aggressive-cache-discard',
+   '--disable-cache',
+   '--disable-application-cache',
+   '--disable-offline-load-stale-cache',
+   '--disk-cache-size=0',
+   '--disable-background-networking',
+   '--disable-default-apps',
+   '--disable-extensions',
+   '--disable-sync',
+   '--disable-translate',
+   '--hide-scrollbars',
+   '--metrics-recording-only',
+   '--mute-audio',
+   '--no-first-run',
+   '--safebrowsing-disable-auto-update',
+   '--ignore-certificate-errors',
+   '--ignore-ssl-errors',
+   '--ignore-certificate-errors-spki-list',
+   //'--disable-software-rasterizer', // New: Reduce CPU load
+   //'--disable-gpu', // New: Disable GPU acceleration to reduce resource usage
+   //'--single-process', // New: Force all instances to run in a single process (use with caution)
+   //'--disable-background-timer-throttling', // New: Disable throttling of background timers
+   //'--disable-renderer-backgrounding' // New: Prevent background tabs from being throttled
+],
+}
+```
 
 ## /api/:session/start-session
+
 ```bash
 curl -X POST --location "http://localhost:21465/api/session-vt-brasil/start-session" \
     -H "Accept: application/json" \
@@ -126,6 +157,7 @@ curl -X POST --location "http://localhost:21465/api/session-vt-brasil/start-sess
 ```
 
 ## [/api/:session/start-session](https://raw.githubusercontent.com/api/{session}/logout-session)
+
 ```bash
 curl -X POST --location "http://localhost:21465/api/session-vt-brasil/logout-session" \
     -H "Accept: application/json" \
@@ -133,11 +165,26 @@ curl -X POST --location "http://localhost:21465/api/session-vt-brasil/logout-ses
     -H "Authorization: Bearer \$2b\$10\$dPxqpPFqGYbS57MoVnhn2OrlUnKsJxnZrg5PQw7KuH02nmAs2G3CG"
 ```
 
+## [/api/:session/close-session](https://raw.githubusercontent.com/api/{session}/check-connection-session)
 
+```bash
+curl -X GET --location "http://localhost:21465/api/session-vt-brasil/check-connection-session" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer \$2b\$10\$dPxqpPFqGYbS57MoVnhn2OrlUnKsJxnZrg5PQw7KuH02nmAs2G3CG"
+```
 
+## [clear-session-data](https://raw.githubusercontent.com/api/{session}/{secretkey}/clear-session-data)
 
+```bash
+curl -X POST --location "http://localhost:21465/api/session-vt-brasil/f2f054f7-19e1-4205-814f-c6c4300d90d1/clear-session-data" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer \$2b\$10\$dPxqpPFqGYbS57MoVnhn2OrlUnKsJxnZrg5PQw7KuH02nmAs2G3CG"
+```
 
 ## [/api/:session/close-session](https://raw.githubusercontent.com/api/{session}/close-session)
+
 ```bash
 curl -X POST --location "http://localhost:21465/api/session-vt-brasil/close-session" \
     -H "Accept: application/json" \
@@ -145,9 +192,19 @@ curl -X POST --location "http://localhost:21465/api/session-vt-brasil/close-sess
     -H "Authorization: Bearer \$2b\$10\$dPxqpPFqGYbS57MoVnhn2OrlUnKsJxnZrg5PQw7KuH02nmAs2G3CG"
 ```
 
+## [showAllSessions](https://raw.githubusercontent.com/api/{secretkey}/show-all-sessions)
 
-  
+```bash
+curl -X GET "http://localhost:21465/api/f2f054f7-19e1-4205-814f-c6c4300d90d1/show-all-sessions" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer \$2b\$10\$dPxqpPFqGYbS57MoVnhn2OrlUnKsJxnZrg5PQw7KuH02nmAs2G3CG"
+```
+
+https://raw.githubusercontent.com/api/{secretkey}/show-all-sessions
+
 ## /api/:session/send-message
+
 ```bash
 curl -X POST --location "http://localhost:21465/api/session-vt-brasil/send-message" \
     -H "Content-Type: application/json; charset=utf-8" \
@@ -159,13 +216,15 @@ curl -X POST --location "http://localhost:21465/api/session-vt-brasil/send-messa
         }"
 ```
 
-##  Use supervisorctl to view logs
+## Use supervisorctl to view logs
+
 ```bash
 sudo supervisorctl tail -f wppconnect stdout
 sudo supervisorctl tail -f wppconnect stderr
 ```
 
 ## api/mySession/all-contacts
+
 ```bash
 curl -X GET --location "http://localhost:21465/api/session-vt-brasil/all-contacts" \
     -H "Content-Type: application/json; charset=utf-8" \
@@ -174,6 +233,7 @@ curl -X GET --location "http://localhost:21465/api/session-vt-brasil/all-contact
 ```
 
 # https://raw.githubusercontent.com/api/{session}/list-chats
+
 ```bash
 curl -X POST --location "http://localhost:21465/api/session-vt-brasil/list-chats" \
     -H "Content-Type: application/json; charset=utf-8" \
@@ -200,8 +260,8 @@ curl -X POST --location "http://localhost:21465/api/session-vt-brasil/list-chats
          "count": 10,
          "direction": "after"
         }'
-         
-         
+
+
 
 curl -X POST --location "http://localhost:21465/api/session-vt-brasil/list-chats" \
     -H "Content-Type: application/json; charset=utf-8" \
@@ -214,9 +274,8 @@ curl -X POST --location "http://localhost:21465/api/session-vt-brasil/list-chats
 
 ```
 
-
-
 ## api/mySession/all-contacts
+
 ```bash
 curl -X GET --location "http://localhost:21465/api/session-vt-brasil/all-new-messages" \
     -H "Content-Type: application/json; charset=utf-8" \
@@ -225,154 +284,130 @@ curl -X GET --location "http://localhost:21465/api/session-vt-brasil/all-new-mes
 ```
 
 curl -X POST --location "http://localhost:21465/api/session-vt-brasil/all-new-messages" \
-    -H "Content-Type: application/json; charset=utf-8" \
-    -H "Accept: application/json" \
-    -H "Authorization: Bearer \$2b\$10\$dPxqpPFqGYbS57MoVnhn2OrlUnKsJxnZrg5PQw7KuH02nmAs2G3CG"
-
+ -H "Content-Type: application/json; charset=utf-8" \
+ -H "Accept: application/json" \
+ -H "Authorization: Bearer \$2b\$10\$dPxqpPFqGYbS57MoVnhn2OrlUnKsJxnZrg5PQw7KuH02nmAs2G3CG"
 
 ## https://raw.githubusercontent.com/api/{session}/all-new-messages
 
 curl -X GET --location "http://localhost:21465/api/mySession/all-new-messages" \
-    -H "Content-Type: application/json; charset=utf-8" \
-    -H "Accept: application/json" \
-    -H "Authorization: Bearer \$2b\$10\$cAwQ2RIpRU6fGakUBJXIhOy4Nb5hcFPOrLtNSeAJPdYziMwLw4ZLa"
-
-
-
-
-
-
+ -H "Content-Type: application/json; charset=utf-8" \
+ -H "Accept: application/json" \
+ -H "Authorization: Bearer \$2b\$10\$cAwQ2RIpRU6fGakUBJXIhOy4Nb5hcFPOrLtNSeAJPdYziMwLw4ZLa"
 
 curl -X POST --location "http://localhost:21465/api/mySession/list-chats" \
-    -H "Content-Type: application/json; charset=utf-8" \
-    -H "Accept: application/json" \
-    -H "Authorization: Bearer \$2b\$10\$cAwQ2RIpRU6fGakUBJXIhOy4Nb5hcFPOrLtNSeAJPdYziMwLw4ZLa" \
-    -d "{
-          \"count\": 2,
-          \"direction\": \"after\"
-        }"
-
-
-
-
+ -H "Content-Type: application/json; charset=utf-8" \
+ -H "Accept: application/json" \
+ -H "Authorization: Bearer \$2b\$10\$cAwQ2RIpRU6fGakUBJXIhOy4Nb5hcFPOrLtNSeAJPdYziMwLw4ZLa" \
+ -d "{
+\"count\": 2,
+\"direction\": \"after\"
+}"
 
 {
-  "id": "<chatId>",
-  "count": 20,
-  "direction": "after"
+"id": "<chatId>",
+"count": 20,
+"direction": "after"
 }
 
 curl -X POST --location "http://localhost:21465/api/mySession/list-chats" \
-    -H "Content-Type: application/json; charset=utf-8" \
-    -H "Accept: application/json" \
-    -H "Authorization: Bearer \$2b\$10\$cAwQ2RIpRU6fGakUBJXIhOy4Nb5hcFPOrLtNSeAJPdYziMwLw4ZLa" \
-    -d "{
-          \"count\": 1,
-        }"
-
+ -H "Content-Type: application/json; charset=utf-8" \
+ -H "Accept: application/json" \
+ -H "Authorization: Bearer \$2b\$10\$cAwQ2RIpRU6fGakUBJXIhOy4Nb5hcFPOrLtNSeAJPdYziMwLw4ZLa" \
+ -d "{
+\"count\": 1,
+}"
 
 ```json
 [
-   {
-      "id":{
-         "server":"c.us",
-         "user":"5519997253772",
-         "_serialized":"5519997253772@c.us"
+  {
+    "id": {
+      "server": "c.us",
+      "user": "5519997253772",
+      "_serialized": "5519997253772@c.us"
+    },
+    "labels": [],
+    "lastReceivedKey": {
+      "fromMe": true,
+      "remote": {
+        "server": "c.us",
+        "user": "5519997253772",
+        "_serialized": "5519997253772@c.us"
       },
-      "labels":[
-         
-      ],
-      "lastReceivedKey":{
-         "fromMe":true,
-         "remote":{
-            "server":"c.us",
-            "user":"5519997253772",
-            "_serialized":"5519997253772@c.us"
-         },
-         "id":"3EB022D300885BCA3BF713",
-         "_serialized":"true_5519997253772@c.us_3EB022D300885BCA3BF713"
+      "id": "3EB022D300885BCA3BF713",
+      "_serialized": "true_5519997253772@c.us_3EB022D300885BCA3BF713"
+    },
+    "t": 1720546663,
+    "unreadCount": 0,
+    "unreadDividerOffset": 0,
+    "isReadOnly": false,
+    "muteExpiration": 0,
+    "isAutoMuted": false,
+    "notSpam": true,
+    "unreadMentionsOfMe": [],
+    "unreadMentionCount": 0,
+    "hasUnreadMention": false,
+    "archiveAtMentionViewedInDrawer": false,
+    "hasChatBeenOpened": false,
+    "tcToken": {},
+    "tcTokenTimestamp": 1720546445,
+    "pendingInitialLoading": false,
+    "celebrationAnimationLastPlayed": 0,
+    "hasRequestedWelcomeMsg": false,
+    "msgs": "None",
+    "kind": "chat",
+    "isBroadcast": false,
+    "isGroup": false,
+    "isUser": true,
+    "contact": {
+      "id": {
+        "server": "c.us",
+        "user": "5519997253772",
+        "_serialized": "5519997253772@c.us"
       },
-      "t":1720546663,
-      "unreadCount":0,
-      "unreadDividerOffset":0,
-      "isReadOnly":false,
-      "muteExpiration":0,
-      "isAutoMuted":false,
-      "notSpam":true,
-      "unreadMentionsOfMe":[
-         
-      ],
-      "unreadMentionCount":0,
-      "hasUnreadMention":false,
-      "archiveAtMentionViewedInDrawer":false,
-      "hasChatBeenOpened":false,
-      "tcToken":{
-         
+      "pushname": "Marcelo",
+      "type": "in",
+      "verifiedName": "Marcelo",
+      "isBusiness": true,
+      "isEnterprise": false,
+      "isSmb": true,
+      "verifiedLevel": 0,
+      "privacyMode": "None",
+      "labels": [],
+      "textStatusLastUpdateTime": -1,
+      "syncToAddressbook": false,
+      "formattedName": "+55 19 99725-3772",
+      "isMe": false,
+      "isMyContact": false,
+      "isPSA": false,
+      "isUser": true,
+      "isWAContact": true,
+      "profilePicThumbObj": {
+        "eurl": "https://pps.whatsapp.net/v/t61.24694-24/309838817_740442780911613_1132383287817995215_n.jpg?ccb=11-4&oh=01_Q5AaIBmE1BOf9mJAQHnR_BM2KCUcQnpzGMuFj3wOOKyEgfmo&oe=669A8399&_nc_sid=e6ed6c&_nc_cat=110",
+        "id": {
+          "server": "c.us",
+          "user": "5519997253772",
+          "_serialized": "5519997253772@c.us"
+        },
+        "img": "https://media-fml20-1.cdn.whatsapp.net/v/t61.24694-24/309838817_740442780911613_1132383287817995215_n.jpg?stp=dst-jpg_s96x96&ccb=11-4&oh=01_Q5AaIM1LOUlRhlij840boxd055dYb5GUEKALMq1FcplXRnCA&oe=669A8399&_nc_sid=e6ed6c&_nc_cat=110",
+        "imgFull": "https://media-fml20-1.cdn.whatsapp.net/v/t61.24694-24/309838817_740442780911613_1132383287817995215_n.jpg?ccb=11-4&oh=01_Q5AaIBmE1BOf9mJAQHnR_BM2KCUcQnpzGMuFj3wOOKyEgfmo&oe=669A8399&_nc_sid=e6ed6c&_nc_cat=110",
+        "tag": "1678826545"
       },
-      "tcTokenTimestamp":1720546445,
-      "pendingInitialLoading":false,
-      "celebrationAnimationLastPlayed":0,
-      "hasRequestedWelcomeMsg":false,
-      "msgs":"None",
-      "kind":"chat",
-      "isBroadcast":false,
-      "isGroup":false,
-      "isUser":true,
-      "contact":{
-         "id":{
-            "server":"c.us",
-            "user":"5519997253772",
-            "_serialized":"5519997253772@c.us"
-         },
-         "pushname":"Marcelo",
-         "type":"in",
-         "verifiedName":"Marcelo",
-         "isBusiness":true,
-         "isEnterprise":false,
-         "isSmb":true,
-         "verifiedLevel":0,
-         "privacyMode":"None",
-         "labels":[
-            
-         ],
-         "textStatusLastUpdateTime":-1,
-         "syncToAddressbook":false,
-         "formattedName":"+55 19 99725-3772",
-         "isMe":false,
-         "isMyContact":false,
-         "isPSA":false,
-         "isUser":true,
-         "isWAContact":true,
-         "profilePicThumbObj":{
-            "eurl":"https://pps.whatsapp.net/v/t61.24694-24/309838817_740442780911613_1132383287817995215_n.jpg?ccb=11-4&oh=01_Q5AaIBmE1BOf9mJAQHnR_BM2KCUcQnpzGMuFj3wOOKyEgfmo&oe=669A8399&_nc_sid=e6ed6c&_nc_cat=110",
-            "id":{
-               "server":"c.us",
-               "user":"5519997253772",
-               "_serialized":"5519997253772@c.us"
-            },
-            "img":"https://media-fml20-1.cdn.whatsapp.net/v/t61.24694-24/309838817_740442780911613_1132383287817995215_n.jpg?stp=dst-jpg_s96x96&ccb=11-4&oh=01_Q5AaIM1LOUlRhlij840boxd055dYb5GUEKALMq1FcplXRnCA&oe=669A8399&_nc_sid=e6ed6c&_nc_cat=110",
-            "imgFull":"https://media-fml20-1.cdn.whatsapp.net/v/t61.24694-24/309838817_740442780911613_1132383287817995215_n.jpg?ccb=11-4&oh=01_Q5AaIBmE1BOf9mJAQHnR_BM2KCUcQnpzGMuFj3wOOKyEgfmo&oe=669A8399&_nc_sid=e6ed6c&_nc_cat=110",
-            "tag":"1678826545"
-         },
-         "msgs":"None"
+      "msgs": "None"
+    },
+    "groupMetadata": "None",
+    "presence": {
+      "id": {
+        "server": "c.us",
+        "user": "5519997253772",
+        "_serialized": "5519997253772@c.us"
       },
-      "groupMetadata":"None",
-      "presence":{
-         "id":{
-            "server":"c.us",
-            "user":"5519997253772",
-            "_serialized":"5519997253772@c.us"
-         },
-         "chatstates":[
-            
-         ]
-      }
-   }
+      "chatstates": []
+    }
+  }
 ]
 ```
 
-
-
 ```json
 [
    {
@@ -382,7 +417,7 @@ curl -X POST --location "http://localhost:21465/api/mySession/list-chats" \
          "_serialized":"5519997253772@c.us"
       },
       "labels":[
-         
+
       ],
       "lastReceivedKey":{
          "fromMe":true,
@@ -402,14 +437,14 @@ curl -X POST --location "http://localhost:21465/api/mySession/list-chats" \
       "isAutoMuted":false,
       "notSpam":true,
       "unreadMentionsOfMe":[
-         
+
       ],
       "unreadMentionCount":0,
       "hasUnreadMention":false,
       "archiveAtMentionViewedInDrawer":false,
       "hasChatBeenOpened":false,
       "tcToken":{
-         
+
       },
       "tcTokenTimestamp":1720546445,
       "pendingInitialLoading":false,
@@ -423,7 +458,7 @@ curl -X POST --location "http://localhost:21465/api/mySession/list-chats" \
       "contact":{                                           *
          "id":{
             "server":"c.us",
-            "user":"5519997253772",                         
+            "user":"5519997253772",
             "_serialized":"5519997253772@c.us"              *
          },
          "pushname":"Marcelo",                              *
@@ -435,7 +470,7 @@ curl -X POST --location "http://localhost:21465/api/mySession/list-chats" \
          "verifiedLevel":0,
          "privacyMode":"None",
          "labels":[
-            
+
          ],
          "textStatusLastUpdateTime":-1,
          "syncToAddressbook":false,
@@ -466,14 +501,12 @@ curl -X POST --location "http://localhost:21465/api/mySession/list-chats" \
             "_serialized":"5519997253772@c.us"
          },
          "chatstates":[
-            
+
          ]
       }
    }
 ]
 ```
-
-
 
 # [BackgroundScheduler](https://chatgpt.com/c/c9a5a279-4d3f-4794-91ef-2869a137bdd5)
 
@@ -532,7 +565,6 @@ Aquí tienes un ejemplo simplificado:
 En este caso, la solicitud intentará obtener 20 chats que vienen después del chat con el `id` "12345".
 
 Si tienes alguna otra duda o necesitas más detalles, no dudes en preguntar.
-
 
 ## Setting wppconnect-server on supervisor
 
@@ -652,7 +684,6 @@ GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
 along with WPPConnect. If not, see <https://www.gnu.org/licenses/>.
-
 
 ## Memory issue
 
