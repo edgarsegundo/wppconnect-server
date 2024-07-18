@@ -1,8 +1,15 @@
+# README+
 
+## useful links
+https://wppconnect.io/swagger/wppconnect-server
 
-
-## https://wppconnect.io/docs/projects/wppserver/installation
+https://wppconnect.io/docs/projects/wppserver/installation
 https://github.com/edgarsegundo/wppconnect
+https://github.com/wppconnect-team/wppconnect?tab=readme-ov-file
+https://wppconnect.io/docs/projects/wppserver/installation
+
+
+## how to install
 
 how to instal nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
@@ -18,14 +25,10 @@ nvm alias default <versión>
 
 https://chatgpt.com/share/aa253fb9-be76-4e9d-a130-b236a1beb4d1
 
-
 How to Run an Ubuntu Server VM with VirtualBox (and login via SSH)
 https://www.youtube.com/watch?v=wqm_DXh0PlQ
 
 
-https://github.com/wppconnect-team/wppconnect?tab=readme-ov-file
-
-https://wppconnect.io/docs/projects/wppserver/installation
 
 
 (Error) gconf-service libasound2 libgconf-2-4 libappindicator1
@@ -48,9 +51,6 @@ sudo apt-get install -y libnss3 lsb-release xdg-utils
 
 sudo apt-get install -y libxshmfence-dev libgbm-dev wget unzip fontconfig locales libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgcc-s1 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libx
 
-
-
-
 ## Install Google Chrome
 
 wget -c https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
@@ -63,18 +63,16 @@ Talvez precisa rodar isso antes de rodar a proxima linha : sudo apt-get install 
 
 sudo dpkg -i google-chrome-stable_current_amd64.deb
 
-
-
-# Instalar las dependencias
+## Instalar las dependencias
 npm install
 
-# Compilar el proyecto
+## Compilar el proyecto
 npm run build
 
-# Ejecutar en modo desarrollo (con hot-reload)
+## Ejecutar en modo desarrollo (con hot-reload)
 npm run dev
 
-# Ejecutar en modo producción
+## Ejecutar en modo producción
 npm start
 
 nvm install 18.17.0
@@ -88,73 +86,151 @@ npm run dev
 
 ssh edgar@localhost
 
-  
-curl -X POST --location "http://localhost:21465/api/mySession/f2f054f7-19e1-4205-814f-c6c4300d90d1/generate-token"
 
 SECRET_KEY: def35ab5-4b2d-4492-ae8a-2a28cfae9996
-SECRET_KEY: f2f054f7-19e1-4205-814f-c6c4300d90d1
 
+curl -X POST --location "http://localhost:21465/api/session-vt-brasil/f2f054f7-19e1-4205-814f-c6c4300d90d1/generate-token"
+
+results:
 
 {
-    "status":"success",
-    "session":"mySession",
-    "token":"$2b$10$cAwQ2RIpRU6fGakUBJXIhOy4Nb5hcFPOrLtNSeAJPdYziMwLw4ZLa",
-    "full":"mySession:$2b$10$cAwQ2RIpRU6fGakUBJXIhOy4Nb5hcFPOrLtNSeAJPdYziMwLw4ZLa"
+   "status":"success",
+   "session":"session-vt-brasil",
+   "token":"$2b$10$dPxqpPFqGYbS57MoVnhn2OrlUnKsJxnZrg5PQw7KuH02nmAs2G3CG",
+   "full":"session-vt-brasil:$2b$10$dPxqpPFqGYbS57MoVnhn2OrlUnKsJxnZrg5PQw7KuH02nmAs2G3CG"
 }
 
 
-#Starting Session
-# /api/:session/start-session
+[# showAllSessions](https://raw.githubusercontent.com/api/{secretkey}/show-all-sessions)
+```bash
+curl -X GET "http://localhost:21465/api/def35ab5-4b2d-4492-ae8a-2a28cfae9996/show-all-sessions"
+```
 
-curl -X POST --location "http://localhost:21465/api/mySession/start-session" \
+
+[# getQrCode](https://raw.githubusercontent.com/api/{session}/qrcode-session)
+```bash
+curl -X GET "http://localhost:21465/api/session-vt-brasil/qrcode-session" \
+    -H "Content-Type: application/json; charset=utf-8" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer \$2b\$10\$dPxqpPFqGYbS57MoVnhn2OrlUnKsJxnZrg5PQw7KuH02nmAs2G3CG"
+```
+
+
+
+## /api/:session/start-session
+```bash
+curl -X POST --location "http://localhost:21465/api/session-vt-brasil/start-session" \
     -H "Accept: application/json" \
     -H "Content-Type: application/json" \
-    -H "Authorization: Bearer \$2b\$10\$cAwQ2RIpRU6fGakUBJXIhOy4Nb5hcFPOrLtNSeAJPdYziMwLw4ZLa"
-    
+    -H "Authorization: Bearer \$2b\$10\$dPxqpPFqGYbS57MoVnhn2OrlUnKsJxnZrg5PQw7KuH02nmAs2G3CG"
+```
+
+## [/api/:session/start-session](https://raw.githubusercontent.com/api/{session}/logout-session)
+```bash
+curl -X POST --location "http://localhost:21465/api/session-vt-brasil/logout-session" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer \$2b\$10\$dPxqpPFqGYbS57MoVnhn2OrlUnKsJxnZrg5PQw7KuH02nmAs2G3CG"
+```
+
+
+
+
+
+## [/api/:session/close-session](https://raw.githubusercontent.com/api/{session}/close-session)
+```bash
+curl -X POST --location "http://localhost:21465/api/session-vt-brasil/close-session" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer \$2b\$10\$dPxqpPFqGYbS57MoVnhn2OrlUnKsJxnZrg5PQw7KuH02nmAs2G3CG"
+```
+
+
   
-#Get QrCode
-# /api/:session/start-session
-# when the session is starting if the method is called again it will return the base64 qrCode
-
-curl -X POST --location "http://localhost:21465/api/mySession/start-session" \
-    -H "Accept: application/json" \
-    -H "Content-Type: application/json" \
-    -H "Authorization: Bearer \$2b\$10\$JcHd97xHN6ErBuiLd7Yu4.r6McvOvEZZDQTQwev2MRK_zQObUZZ9C"
-
-
-#Send Message
-# /api/:session/send-message
-curl -X POST --location "http://localhost:21465/api/mySession/send-message" \
+## /api/:session/send-message
+```bash
+curl -X POST --location "http://localhost:21465/api/session-vt-brasil/send-message" \
     -H "Content-Type: application/json; charset=utf-8" \
     -H "Accept: application/json" \
-    -H "Authorization: Bearer \$2b\$10\$cAwQ2RIpRU6fGakUBJXIhOy4Nb5hcFPOrLtNSeAJPdYziMwLw4ZLa" \
+    -H "Authorization: Bearer \$2b\$10\$dPxqpPFqGYbS57MoVnhn2OrlUnKsJxnZrg5PQw7KuH02nmAs2G3CG" \
     -d "{
           \"phone\": \"5519991113176\",
           \"message\": \"*Viaje 7* Trâmite\"
         }"
+```
 
+##  Use supervisorctl to view logs
+```bash
+sudo supervisorctl tail -f wppconnect stdout
+sudo supervisorctl tail -f wppconnect stderr
+```
 
-curl -X POST --location "http://localhost:21465/api/mySession/send-message" \
+## api/mySession/all-contacts
+```bash
+curl -X GET --location "http://localhost:21465/api/session-vt-brasil/all-contacts" \
     -H "Content-Type: application/json; charset=utf-8" \
     -H "Accept: application/json" \
-    -H "Authorization: Bearer \$2b\$10\$cAwQ2RIpRU6fGakUBJXIhOy4Nb5hcFPOrLtNSeAJPdYziMwLw4ZLa" \
-    -d "{
-          \"phone\": \"5541988619399\",
-          \"message\": \"*Seu Sogro* da API\"
-        }"
+    -H "Authorization: Bearer \$2b\$10\$dPxqpPFqGYbS57MoVnhn2OrlUnKsJxnZrg5PQw7KuH02nmAs2G3CG"
+```
 
-
-curl -X POST --location "http://localhost:21465/api/mySession/send-message" \
+# https://raw.githubusercontent.com/api/{session}/list-chats
+```bash
+curl -X POST --location "http://localhost:21465/api/session-vt-brasil/list-chats" \
     -H "Content-Type: application/json; charset=utf-8" \
     -H "Accept: application/json" \
-    -H "Authorization: Bearer ???" \
-    -d "{
-          \"phone\": \"5519991113176\",
-          \"message\": \"*Viaje 7* Trâmite\"
-        }"
+    -H "Authorization: Bearer \$2b\$10\$dPxqpPFqGYbS57MoVnhn2OrlUnKsJxnZrg5PQw7KuH02nmAs2G3CG"
+
+curl -X POST --location "http://localhost:21465/api/session-vt-brasil/list-chats" \
+    -H "Content-Type: application/json; charset=utf-8" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer \$2b\$10\$dPxqpPFqGYbS57MoVnhn2OrlUnKsJxnZrg5PQw7KuH02nmAs2G3CG" \
+    -d '{
+         "id": "5521996611516@c.us",
+         "direction": "before"
+        }'
+         \"count\": 2,
 
 
-# https://raw.githubusercontent.com/api/{session}/all-new-messages
+curl -X POST --location "http://localhost:21465/api/session-vt-brasil/list-chats" \
+    -H "Content-Type: application/json; charset=utf-8" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer \$2b\$10\$dPxqpPFqGYbS57MoVnhn2OrlUnKsJxnZrg5PQw7KuH02nmAs2G3CG" \
+    -d '{
+         "id": "5519992278938@c.us",
+         "count": 10,
+         "direction": "after"
+        }'
+         
+         
+
+curl -X POST --location "http://localhost:21465/api/session-vt-brasil/list-chats" \
+    -H "Content-Type: application/json; charset=utf-8" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer \$2b\$10\$dPxqpPFqGYbS57MoVnhn2OrlUnKsJxnZrg5PQw7KuH02nmAs2G3CG" \
+    -d '{
+         "count": 3
+        }'
+
+
+```
+
+
+
+## api/mySession/all-contacts
+```bash
+curl -X GET --location "http://localhost:21465/api/session-vt-brasil/all-new-messages" \
+    -H "Content-Type: application/json; charset=utf-8" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer \$2b\$10\$dPxqpPFqGYbS57MoVnhn2OrlUnKsJxnZrg5PQw7KuH02nmAs2G3CG"
+```
+
+curl -X POST --location "http://localhost:21465/api/session-vt-brasil/all-new-messages" \
+    -H "Content-Type: application/json; charset=utf-8" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer \$2b\$10\$dPxqpPFqGYbS57MoVnhn2OrlUnKsJxnZrg5PQw7KuH02nmAs2G3CG"
+
+
+## https://raw.githubusercontent.com/api/{session}/all-new-messages
 
 curl -X GET --location "http://localhost:21465/api/mySession/all-new-messages" \
     -H "Content-Type: application/json; charset=utf-8" \
@@ -163,10 +239,6 @@ curl -X GET --location "http://localhost:21465/api/mySession/all-new-messages" \
 
 
 
-curl -X GET --location "http://localhost:21465/api/mySession/all-contacts" \
-    -H "Content-Type: application/json; charset=utf-8" \
-    -H "Accept: application/json" \
-    -H "Authorization: Bearer \$2b\$10\$cAwQ2RIpRU6fGakUBJXIhOy4Nb5hcFPOrLtNSeAJPdYziMwLw4ZLa"
 
 
 
