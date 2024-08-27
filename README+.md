@@ -3,7 +3,6 @@
 ## useful links
 
 https://wppconnect.io/swagger/wppconnect-server
-
 https://wppconnect.io/docs/projects/wppserver/installation
 https://github.com/edgarsegundo/wppconnect
 https://github.com/wppconnect-team/wppconnect?tab=readme-ov-file
@@ -72,6 +71,142 @@ npm run build
 
 npm run dev
 
+## Use supervisorctl to view logs or...
+
+```bash
+sudo supervisorctl tail -f wppconnect stdout
+sudo supervisorctl tail -f wppconnect stderr
+```
+
+or
+
+```bash
+tail -f -n 2048 /var/log/wppconnect.out.log
+```
+
+## Problema: parece que a sessão se perde
+
+1. `wppconnect_add_new_contacts.py` tinha parado de funcionar, veja o erro abaixo:
+   2024-08-27 17:00:03,233 | **main** | ERROR - ❌ HTTP error occurred: 404 Client Error: Not Found for url: http://localhost:21465/api/session-fv/list-chats
+
+2. Aí eu rodei o endpoint manualmente e retornou status `Disconnected`.
+
+```bash
+
+edgar@p2digital:~/Repos/microservices$ curl -X POST --location "http://localhost:21465/api/session-fv/list-chats" \
+    -H "Content-Type: application/json; charset=utf-8" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer \$2b\$10\$DMFosWVpinnnhM2FGRaNAOssuACZV7bOQYHQmr9WiS2MrpSSEP4bu" \
+    -d '{ "count": 3 }'
+{"response":null,"status":"Disconnected","message":"A sessão do WhatsApp não está ativa."}edgar@p2digital:~/Repos/microservices$ ^C
+```
+
+3. Aí eu rodei o endpoint `start-session` manualmente e todo voltou a funcionar
+
+```bash
+edgar@p2digital:~/Repos/microservices$ curl -X POST --location "http://localhost:21465/api/session-fv/start-session" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer \$2b\$10\$DMFosWVpinnnhM2FGRaNAOssuACZV7bOQYHQmr9WiS2MrpSSEP4bu"
+{"status":"CLOSED","qrcode":null,"session":""}edgar@p2digital:~/Repos/microservices$
+```
+
+4. Pesando em uma forma de criar un cron para verificar o status e executar start-session quando a sessão cair
+
+## how to edit the crontab
+
+crontab -e
+
+## release_port.sh
+
+```bash
+#!/bin/bash
+
+# Find the process using port 21465
+PID=$(sudo lsof -t -i :21465)
+
+# Check if a process was found
+if [ -z "$PID" ]; then
+  echo "No process found using port 21465."
+else
+  # Kill the process
+  echo "Killing process $PID using port 21465."
+  sudo kill -9 $PID
+
+  # Verify the process has been killed
+  if [ $? -eq 0 ]; then
+    echo "Process $PID has been killed."
+  else
+    echo "Failed to kill process $PID."
+  fi
+fi
+```
+
+## Which version am I using of [wppconnect-server](https://github.com/wppconnect-team/wppconnect-server) on my VPS?
+
+git clone https://github.com/wppconnect-team/wppconnect-server.git
+git checkout v2.6.0
+npm install
+npm run build
+
+**note:** Remember that I'm not using this forked repo in production
+
+## fastvistos session
+
+tail -f -n 2048 /var/log/wppconnect.out.log
+
+curl -X POST --location "http://localhost:21465/api/session-fv/f2f054f7-19e1-4205-814f-c6c4300d90d1/generate-token"
+
+```json
+{
+  "status": "success",
+  "session": "session-fv",
+  "token": "$2b$10$DMFosWVpinnnhM2FGRaNAOssuACZV7bOQYHQmr9WiS2MrpSSEP4bu",
+  "full": "session-fv:$2b$10$DMFosWVpinnnhM2FGRaNAOssuACZV7bOQYHQmr9WiS2MrpSSEP4bu"
+}
+```
+
+### /api/:session/start-session
+
+```bash
+curl -X POST --location "http://localhost:21465/api/session-fv/start-session" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer \$2b\$10\$DMFosWVpinnnhM2FGRaNAOssuACZV7bOQYHQmr9WiS2MrpSSEP4bu"
+```
+
+### list-chats
+
+```bash
+curl -X POST --location "http://localhost:21465/api/session-fv/list-chats" \
+    -H "Content-Type: application/json; charset=utf-8" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer \$2b\$10\$DMFosWVpinnnhM2FGRaNAOssuACZV7bOQYHQmr9WiS2MrpSSEP4bu" \
+    -d '{ "count": 3 }'
+```
+
+## [chat-by-id](https://raw.githubusercontent.com/api/{session}/chat-by-id/{phone})
+
+```bash
+curl -X GET --location "http://localhost:21465/api/session-fv/chat-by-id/5511958766374" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer \$2b\$10\$DMFosWVpinnnhM2FGRaNAOssuACZV7bOQYHQmr9WiS2MrpSSEP4bu"
+```
+
+## /api/:session/send-message
+
+```bash
+curl -X POST --location "http://localhost:21465/api/session-fv/send-message" \
+    -H "Content-Type: application/json; charset=utf-8" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer \$2b\$10\$DMFosWVpinnnhM2FGRaNAOssuACZV7bOQYHQmr9WiS2MrpSSEP4bu" \
+    -d "{
+          \"phone\": \"5519991113176\",
+          \"message\": \"* test 1\"
+        }"
+```
+
 ## Ejecutar en modo producción
 
 npm start
@@ -87,9 +222,9 @@ npm run dev
 
 ssh edgar@localhost
 
-SECRET_KEY: def35ab5-4b2d-4492-ae8a-2a28cfae9996
+curl -X POST --location "http://localhost:21465/api/session-vt-brasil/UUID-SECRET-KEY/generate-token"
 
-curl -X POST --location "http://localhost:21465/api/session-vt-brasil/f2f054f7-19e1-4205-814f-c6c4300d90d1/generate-token"
+**notes:** the uuid can be found at `src/config.ts`
 
 results:
 
@@ -100,7 +235,7 @@ results:
 "full":"session-vt-brasil:$2b$10$dPxqpPFqGYbS57MoVnhn2OrlUnKsJxnZrg5PQw7KuH02nmAs2G3CG"
 }
 
-[# getQrCode](https://raw.githubusercontent.com/api/{session}/qrcode-session)
+## [getQrCode](https://raw.githubusercontent.com/api/{session}/qrcode-session)
 
 ```bash
 curl -X GET "http://localhost:21465/api/session-vt-brasil/qrcode-session" \
@@ -201,7 +336,24 @@ curl -X GET "http://localhost:21465/api/f2f054f7-19e1-4205-814f-c6c4300d90d1/sho
     -H "Authorization: Bearer \$2b\$10\$dPxqpPFqGYbS57MoVnhn2OrlUnKsJxnZrg5PQw7KuH02nmAs2G3CG"
 ```
 
-https://raw.githubusercontent.com/api/{secretkey}/show-all-sessions
+## [chat-by-id](https://raw.githubusercontent.com/api/{session}/chat-by-id/{phone})
+
+```bash
+curl -X GET --location "http://localhost:21465/api/session-vt-brasil/chat-by-id/5519981440555" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer \$2b\$10\$dPxqpPFqGYbS57MoVnhn2OrlUnKsJxnZrg5PQw7KuH02nmAs2G3CG"
+```
+
+## [get-messages](https://raw.githubusercontent.com/api/{session}/get-messages/{phone})
+
+```bash
+curl -X GET --location "http://localhost:21465/api/session-vt-brasil/get-messages/5519981440555" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer \$2b\$10\$dPxqpPFqGYbS57MoVnhn2OrlUnKsJxnZrg5PQw7KuH02nmAs2G3CG" \
+    -o messages_5519981440555.json
+```
 
 ## /api/:session/send-message
 
@@ -214,13 +366,6 @@ curl -X POST --location "http://localhost:21465/api/session-vt-brasil/send-messa
           \"phone\": \"5519991113176\",
           \"message\": \"*Viaje 7* Trâmite\"
         }"
-```
-
-## Use supervisorctl to view logs
-
-```bash
-sudo supervisorctl tail -f wppconnect stdout
-sudo supervisorctl tail -f wppconnect stderr
 ```
 
 ## api/mySession/all-contacts
@@ -270,7 +415,6 @@ curl -X POST --location "http://localhost:21465/api/session-vt-brasil/list-chats
     -d '{
          "count": 3
         }'
-
 
 ```
 
