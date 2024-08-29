@@ -86,6 +86,15 @@ tail -f -n 2048 /var/log/wppconnect.out.log
 
 ## Problema: parece que a sessão se perde
 
+https://raw.githubusercontent.com/api/{session}/check-connection-session
+
+```bash
+curl -X GET --location "http://localhost:21465/api/session-fv/check-connection-session" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer \$2b\$10\$DMFosWVpinnnhM2FGRaNAOssuACZV7bOQYHQmr9WiS2MrpSSEP4bu"
+```
+
 1. `wppconnect_add_new_contacts.py` tinha parado de funcionar, veja o erro abaixo:
    2024-08-27 17:00:03,233 | **main** | ERROR - ❌ HTTP error occurred: 404 Client Error: Not Found for url: http://localhost:21465/api/session-fv/list-chats
 
