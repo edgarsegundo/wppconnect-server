@@ -2,6 +2,38 @@
 
 Current secret key: -H "Authorization: Bearer \$2b\$10\$DMFosWVpinnnhM2FGRaNAOssuACZV7bOQYHQmr9WiS2MrpSSEP4bu"
 
+
+## develop a script to test all session conections and send a message test
+
+curl -X GET --location "http://localhost:21465/api/session-fv/check-connection-session" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer \$2b\$10\$DMFosWVpinnnhM2FGRaNAOssuACZV7bOQYHQmr9WiS2MrpSSEP4bu"
+
+
+curl -X GET --location "http://localhost:21465/api/edgar-phone/check-connection-session" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer \$2b\$10\$yOj8hbrggVyttdrx.LsNiumIMkcruv9Nl4DjoZPH0wNLgEmaDWR5W"
+
+curl -X POST --location "http://localhost:21465/api/session-fv/send-message" \
+    -H "Content-Type: application/json; charset=utf-8" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer \$2b\$10\$DMFosWVpinnnhM2FGRaNAOssuACZV7bOQYHQmr9WiS2MrpSSEP4bu" \
+    -d "{
+          \"phone\": \"5519991113176\",
+          \"message\": \"* test 1\"
+        }"
+
+curl -X POST --location "http://localhost:21465/api/edgar-phone/send-message" \
+    -H "Content-Type: application/json; charset=utf-8" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer \$2b\$10\$yOj8hbrggVyttdrx.LsNiumIMkcruv9Nl4DjoZPH0wNLgEmaDWR5W" \
+    -d "{
+          \"phone\": \"5519991121805\",
+          \"message\": \"* test 1\"
+        }"
+
 ## Problema: parece que a sessão se perde
 
 https://raw.githubusercontent.com/api/{session}/check-connection-session
