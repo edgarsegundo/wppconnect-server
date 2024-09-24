@@ -40,6 +40,13 @@ edgar@p2digital:~/Repos/microservices$ curl -X POST --location "http://localhost
 
 4. Pesando em uma forma de criar un cron para verificar o status e executar start-session quando a sessão cair
 
+
+## new edgar-phone session for debugging purposes
+
+```json
+{"status":"success","session":"edgar-phone","token":"\$2b\$10\$yOj8hbrggVyttdrx.LsNiumIMkcruv9Nl4DjoZPH0wNLgEmaDWR5W","full":"edgar-phone:$2b$10$yOj8hbrggVyttdrx.LsNiumIMkcruv9Nl4DjoZPH0wNLgEmaDWR5W"}
+```
+
 ## useful links
 
 - https://wppconnect.io/swagger/wppconnect-server
