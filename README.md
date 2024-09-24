@@ -249,7 +249,7 @@ This server use config.ts file to define some options, default values are:
 
 # Secret Key
 
-Your `secretKey` is inside the `config.ts` file. You must change the default value to one that only you know.
+Your `secretKey`, refered as `THISISMYSECURETOKEN` below, is inside the `config.ts` file. You must change the default value to one that only you know.
 
 <!-- ![Peek 2021-03-25 09-33](https://user-images.githubusercontent.com/40338524/112473515-3b310a80-8d4d-11eb-94bb-ff409c91d9b8.gif) -->
 
