@@ -1,5 +1,45 @@
 # README+
 
+Current secret key: -H "Authorization: Bearer \$2b\$10\$DMFosWVpinnnhM2FGRaNAOssuACZV7bOQYHQmr9WiS2MrpSSEP4bu"
+
+## Problema: parece que a sessão se perde
+
+https://raw.githubusercontent.com/api/{session}/check-connection-session
+
+```bash
+curl -X GET --location "http://localhost:21465/api/session-fv/check-connection-session" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer \$2b\$10\$DMFosWVpinnnhM2FGRaNAOssuACZV7bOQYHQmr9WiS2MrpSSEP4bu"
+```
+
+1. `wppconnect_add_new_contacts.py` tinha parado de funcionar, veja o erro abaixo:
+   2024-08-27 17:00:03,233 | **main** | ERROR - ❌ HTTP error occurred: 404 Client Error: Not Found for url: http://localhost:21465/api/session-fv/list-chats
+
+2. Aí eu rodei o endpoint manualmente e retornou status `Disconnected`.
+
+```bash
+
+edgar@p2digital:~/Repos/microservices$ curl -X POST --location "http://localhost:21465/api/session-fv/list-chats" \
+    -H "Content-Type: application/json; charset=utf-8" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer \$2b\$10\$DMFosWVpinnnhM2FGRaNAOssuACZV7bOQYHQmr9WiS2MrpSSEP4bu" \
+    -d '{ "count": 3 }'
+{"response":null,"status":"Disconnected","message":"A sessão do WhatsApp não está ativa."}edgar@p2digital:~/Repos/microservices$ ^C
+```
+
+3. Aí eu rodei o endpoint `start-session` manualmente e todo voltou a funcionar
+
+```bash
+edgar@p2digital:~/Repos/microservices$ curl -X POST --location "http://localhost:21465/api/session-fv/start-session" \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer \$2b\$10\$DMFosWVpinnnhM2FGRaNAOssuACZV7bOQYHQmr9WiS2MrpSSEP4bu"
+{"status":"CLOSED","qrcode":null,"session":""}edgar@p2digital:~/Repos/microservices$
+```
+
+4. Pesando em uma forma de criar un cron para verificar o status e executar start-session quando a sessão cair
+
 ## useful links
 
 https://wppconnect.io/swagger/wppconnect-server
@@ -84,43 +124,6 @@ or
 tail -f -n 2048 /var/log/wppconnect.out.log
 ```
 
-## Problema: parece que a sessão se perde
-
-https://raw.githubusercontent.com/api/{session}/check-connection-session
-
-```bash
-curl -X GET --location "http://localhost:21465/api/session-fv/check-connection-session" \
-    -H "Accept: application/json" \
-    -H "Content-Type: application/json" \
-    -H "Authorization: Bearer \$2b\$10\$DMFosWVpinnnhM2FGRaNAOssuACZV7bOQYHQmr9WiS2MrpSSEP4bu"
-```
-
-1. `wppconnect_add_new_contacts.py` tinha parado de funcionar, veja o erro abaixo:
-   2024-08-27 17:00:03,233 | **main** | ERROR - ❌ HTTP error occurred: 404 Client Error: Not Found for url: http://localhost:21465/api/session-fv/list-chats
-
-2. Aí eu rodei o endpoint manualmente e retornou status `Disconnected`.
-
-```bash
-
-edgar@p2digital:~/Repos/microservices$ curl -X POST --location "http://localhost:21465/api/session-fv/list-chats" \
-    -H "Content-Type: application/json; charset=utf-8" \
-    -H "Accept: application/json" \
-    -H "Authorization: Bearer \$2b\$10\$DMFosWVpinnnhM2FGRaNAOssuACZV7bOQYHQmr9WiS2MrpSSEP4bu" \
-    -d '{ "count": 3 }'
-{"response":null,"status":"Disconnected","message":"A sessão do WhatsApp não está ativa."}edgar@p2digital:~/Repos/microservices$ ^C
-```
-
-3. Aí eu rodei o endpoint `start-session` manualmente e todo voltou a funcionar
-
-```bash
-edgar@p2digital:~/Repos/microservices$ curl -X POST --location "http://localhost:21465/api/session-fv/start-session" \
-    -H "Accept: application/json" \
-    -H "Content-Type: application/json" \
-    -H "Authorization: Bearer \$2b\$10\$DMFosWVpinnnhM2FGRaNAOssuACZV7bOQYHQmr9WiS2MrpSSEP4bu"
-{"status":"CLOSED","qrcode":null,"session":""}edgar@p2digital:~/Repos/microservices$
-```
-
-4. Pesando em uma forma de criar un cron para verificar o status e executar start-session quando a sessão cair
 
 ## how to edit the crontab
 
