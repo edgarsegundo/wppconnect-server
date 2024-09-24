@@ -42,11 +42,11 @@ edgar@p2digital:~/Repos/microservices$ curl -X POST --location "http://localhost
 
 ## useful links
 
-https://wppconnect.io/swagger/wppconnect-server
-https://wppconnect.io/docs/projects/wppserver/installation
-https://github.com/edgarsegundo/wppconnect
-https://github.com/wppconnect-team/wppconnect?tab=readme-ov-file
-https://wppconnect.io/docs/projects/wppserver/installation
+- https://wppconnect.io/swagger/wppconnect-server
+- https://wppconnect.io/docs/projects/wppserver/installation
+- https://github.com/edgarsegundo/wppconnect
+- https://github.com/wppconnect-team/wppconnect?tab=readme-ov-file
+- https://wppconnect.io/docs/projects/wppserver/installation
 
 ## how to install
 
