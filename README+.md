@@ -2,12 +2,12 @@
 
 ## How to updat/upgrade version
 
-git stash
-git checkout tags/v2.7.0 -b v2.7.0
-git stash apply
-npm install
-npm run build
-sudo reboot
+1. git stash
+2. git checkout tags/v2.7.0 -b v2.7.0
+3. git stash apply
+4. npm install
+5. npm run build
+6. sudo reboot
 
 ## develop a script to test all session conections and send a message test
 
