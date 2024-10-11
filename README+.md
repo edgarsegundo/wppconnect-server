@@ -1,9 +1,17 @@
 # README+
 
-Current secret key: -H "Authorization: Bearer \$2b\$10\$DMFosWVpinnnhM2FGRaNAOssuACZV7bOQYHQmr9WiS2MrpSSEP4bu"
+## How to updat/upgrade version
 
+git stash
+git checkout tags/v2.7.0 -b v2.7.0
+git stash apply
+npm install
+npm run build
+sudo reboot
 
 ## develop a script to test all session conections and send a message test
+
+Current secret key: -H "Authorization: Bearer \$2b\$10\$DMFosWVpinnnhM2FGRaNAOssuACZV7bOQYHQmr9WiS2MrpSSEP4bu"
 
 curl -X GET --location "http://localhost:21465/api/session-fv/check-connection-session" \
     -H "Accept: application/json" \
