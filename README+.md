@@ -14,6 +14,7 @@
 1. Stop wppconnect on supervisor
 2. Check for Existing Processes: ps aux | grep node
 3. Run the server.js locally: node ./dist/server.js --verbose
+4. **** Talvez eu tenho que kill all chrome processess?????
 
 ## develop a script to test all session conections and send a message test
 
