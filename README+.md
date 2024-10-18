@@ -9,6 +9,12 @@
 5. npm run build
 6. sudo reboot
 
+## how to start wpp server locally to debug
+
+1. Stop wppconnect on supervisor
+2. Check for Existing Processes: ps aux | grep node
+3. Run the server.js locally: node ./dist/server.js --verbose
+
 ## develop a script to test all session conections and send a message test
 
 Current secret key: -H "Authorization: Bearer \$2b\$10\$DMFosWVpinnnhM2FGRaNAOssuACZV7bOQYHQmr9WiS2MrpSSEP4bu"
