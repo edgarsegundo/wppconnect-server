@@ -39,6 +39,15 @@ curl -X POST --location "http://localhost:21465/api/session-fv/send-message" \
           \"message\": \"* test 1\"
         }"
 
+curl -X POST --location "http://localhost:21465/api/session-fv/send-message" \
+    -H "Content-Type: application/json; charset=utf-8" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer \$2b\$10\$DMFosWVpinnnhM2FGRaNAOssuACZV7bOQYHQmr9WiS2MrpSSEP4bu" \
+    -d "{
+          \"phone\": \"5519991113176\",
+          \"message\": \"* test 1\"
+        }"
+
 curl -X POST --location "http://localhost:21465/api/edgar-phone/send-message" \
     -H "Content-Type: application/json; charset=utf-8" \
     -H "Accept: application/json" \
@@ -46,7 +55,7 @@ curl -X POST --location "http://localhost:21465/api/edgar-phone/send-message" \
     -d "{
           \"phone\": \"5519991121805\",
           \"message\": \"* test 1\"
-        }"
+        }"        
 
 ## Problema: parece que a sessão se perde
 
