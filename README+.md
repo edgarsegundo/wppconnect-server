@@ -6,8 +6,9 @@
 2. git checkout tags/v2.7.0 -b v2.7.0
 3. git stash apply
 4. npm install
-5. npm run build
-6. sudo reboot
+5. npm update @wppconnect-team/wppconnect
+6. npm run build
+7. sudo reboot
 
 ## how to start wpp server locally to debug
 
