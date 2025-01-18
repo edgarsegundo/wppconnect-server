@@ -3,12 +3,13 @@
 ## How to updat/upgrade version
 
 1. git stash
-2. git checkout tags/v2.7.0 -b v2.7.0
-3. git stash apply
-4. npm install
-5. npm update @wppconnect-team/wppconnect
-6. npm run build
-7. sudo reboot
+2. git fetch
+3. git checkout v2.7.0
+4. git stash apply
+5. npm install
+6. npm update @wppconnect-team/wppconnect
+7. npm run build
+8. sudo reboot
 
 ## how to start wpp server locally to debug
 
