@@ -1,23 +1,5 @@
 # README+
 
-## How to updat/upgrade version
-
-1. git stash
-2. git fetch
-3. git checkout v2.7.0
-4. git stash apply
-5. npm install
-6. npm update @wppconnect-team/wppconnect
-7. npm run build
-8. sudo reboot
-
-## how to start wpp server locally to debug
-
-1. Stop wppconnect on supervisor
-2. Check for Existing Processes: ps aux | grep node
-3. Run the server.js locally: node ./dist/server.js --verbose
-4. **** Talvez eu tenho que kill all chrome processess?????
-
 ## develop a script to test all session conections and send a message test
 
 Current secret key: -H "Authorization: Bearer \$2b\$10\$DMFosWVpinnnhM2FGRaNAOssuACZV7bOQYHQmr9WiS2MrpSSEP4bu"
@@ -96,13 +78,6 @@ curl -X POST --location "http://localhost:21465/api/edgar-phone/start-session" \
 {"status":"success","session":"edgar-phone","token":"\$2b\$10\$yOj8hbrggVyttdrx.LsNiumIMkcruv9Nl4DjoZPH0wNLgEmaDWR5W","full":"edgar-phone:$2b$10$yOj8hbrggVyttdrx.LsNiumIMkcruv9Nl4DjoZPH0wNLgEmaDWR5W"}
 ```
 
-## useful links
-
-- https://wppconnect.io/swagger/wppconnect-server
-- https://wppconnect.io/docs/projects/wppserver/installation
-- https://github.com/edgarsegundo/wppconnect
-- https://github.com/wppconnect-team/wppconnect?tab=readme-ov-file
-- https://wppconnect.io/docs/projects/wppserver/installation
 
 ## how to install
 
@@ -166,20 +141,6 @@ npm run build
 ## Ejecutar en modo desarrollo (con hot-reload)
 
 npm run dev
-
-## Use supervisorctl to view logs or...
-
-```bash
-sudo supervisorctl tail -f wppconnect stdout
-sudo supervisorctl tail -f wppconnect stderr
-```
-
-or
-
-```bash
-tail -f -n 2048 /var/log/wppconnect.out.log
-```
-
 
 ## how to edit the crontab
 

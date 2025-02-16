@@ -319,3 +319,42 @@ See the `routes file` for all the routes. [here](/src/routes/index.js) and HTTP 
 # Swagger UI
 
 Swagger ui can be found at `/api-docs`
+
+## How to updat/upgrade version
+
+1. git stash
+2. git fetch
+3. git checkout v2.7.0
+4. git stash apply
+5. npm install
+6. npm update @wppconnect-team/wppconnect
+7. npm run build
+8. sudo reboot
+
+## How to start wpp server locally to debug
+
+1. Stop wppconnect on supervisor
+2. Check for Existing Processes: ps aux | grep node
+3. Run the server.js locally: node ./dist/server.js --verbose
+4. **** Talvez eu tenho que kill all chrome processess?????
+
+## Useful links
+
+- https://wppconnect.io/swagger/wppconnect-server
+- https://wppconnect.io/docs/projects/wppserver/installation
+- https://github.com/edgarsegundo/wppconnect
+- https://github.com/wppconnect-team/wppconnect?tab=readme-ov-file
+- https://wppconnect.io/docs/projects/wppserver/installation
+
+## How to see logs: Use supervisorctl to view logs or...
+
+```bash
+sudo supervisorctl tail -f wppconnect stdout
+sudo supervisorctl tail -f wppconnect stderr
+```
+
+or
+
+```bash
+tail -f -n 2048 /var/log/wppconnect.out.log
+```
